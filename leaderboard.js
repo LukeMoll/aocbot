@@ -1,21 +1,23 @@
 const request = require('request');
 const express = require('express');
-const jsonparser = require('body-parser').json();
+const formparser = require('body-parser').urlencoded({extended: true});
 
 const router = express.Router();
 
-router.post('/', jsonparser, (req,res) => {
+router.post('/', formparser, (req,res) => {
     let responseURL = req.body.response_url;
-    request(responseURL, {
+    let options = {
+        uri: responseURL,
         method: 'POST',
         json: {
-            "text": "Wololo"
+            "text": "Wololo" // todo put the stuff in here
         }
-    }, (err, res, body) => {
-        if(err) {
-            console.log(err);
+    };
+    request(options, (rerr, rres, rbody) => {
+        if(rerr) {
+            console.log(rerr);
         }
-    })
+    });
 });
 
 module.exports = router;
