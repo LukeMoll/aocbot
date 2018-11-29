@@ -1,0 +1,25 @@
+{
+  "name": "aocbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeMoll/aocbot.git"
+  },
+  "author": "Luke Moll",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukeMoll/aocbot/issues"
+  },
+  "homepage": "https://github.com/LukeMoll/aocbot#readme"
+}
