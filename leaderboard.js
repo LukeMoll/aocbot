@@ -5,12 +5,12 @@ const formparser = require('body-parser').urlencoded({extended: true});
 
 const router = express.Router();
 
-const options = JSON.parse(fs.readFileSync("secrets.json"));
+const config = JSON.parse(fs.readFileSync("secrets.json"));
 
 const cookieJar = request.jar();
-cookieJar.setCookie(request.cookie(`session=${options.session_cookie}`), "http://adventofcode.com");
+cookieJar.setCookie(request.cookie(`session=${config.session_cookie}`), "http://adventofcode.com");
 const year = 2017;
-const leaderboardURL = `https://adventofcode.com/${year}/leaderboard/private/view/${options.private_leaderboard}.json`;
+const leaderboardURL = `https://adventofcode.com/${year}/leaderboard/private/view/${config.private_leaderboard}.json`;
 
 router.post('/', formparser, (req,res) => {
     let responseURL = req.body.response_url;
@@ -93,4 +93,6 @@ function multiFactorPredicate(...keys) {
     }
 }
 
-module.exports = router;
+module.exports = {router, getLeaderboard, formatLeaderboard, year};
+const ircbot = require('./ircbot');
+ircbot.start(module.exports);
