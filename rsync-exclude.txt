@@ -1,0 +1,5 @@
+node_modules/
+.git/
+copy.sh
+rsync-exclude.txt
+test/
